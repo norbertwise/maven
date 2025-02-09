@@ -1,0 +1,15 @@
+pipeline {
+
+   agent {
+        docker { image 'alpine'  }
+    }
+
+    stages {
+        stage('Test') {
+            steps {
+                sh 'echo hello form container'
+                git branch: 'main', url: 'https://github.com/norbertwise/maven.git'
+            }
+        }
+    }
+}
